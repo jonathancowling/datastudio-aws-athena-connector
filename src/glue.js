@@ -12,7 +12,7 @@ function glueTableToFields(table) {
   var cc = DataStudioApp.createCommunityConnector();
   var fields = cc.getFields();
   var types = cc.FieldType;
-  var columns = table.PartitionKeys.concat(table.StorageDescriptor.Columns);
+  var columns = (table.PartitionKeys || []).concat(table.StorageDescriptor.Columns);
 
   columns.forEach(function (column) {
     // Set fields based on data type
